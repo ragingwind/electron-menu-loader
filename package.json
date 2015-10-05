@@ -1,0 +1,32 @@
+{
+  "name": "electron-menu-loader",
+  "version": "0.0.0",
+  "description": "Loading a menu template for app running on current platform",
+  "license": "MIT",
+  "repository": "ragingwind/electron-menu-loader",
+  "author": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com",
+    "url": "ragingwind.me"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "electron",
+    "electron-menu",
+    "electron-menu-loader"
+  ],
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node"
+    ]
+  }
+}

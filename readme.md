@@ -1,4 +1,4 @@
-# electron-menu-loader [![Build Status](https://travis-ci.org/ragingwind/electron-menuloader.svg?branch=master)](https://travis-ci.org/ragingwind/electron-menuloader)
+# electron-menu-loader
 
 > Loading a menu template for app running on current platform
 

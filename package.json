@@ -1,6 +1,6 @@
 {
   "name": "electron-menu-loader",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Loading a menu template for app running on current platform",
   "license": "MIT",
   "repository": "ragingwind/electron-menu-loader",

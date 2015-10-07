@@ -28,5 +28,9 @@
     "envs": [
       "node"
     ]
+  },
+  "jshintConfig": {
+    "esnext": true,
+    "node": true
   }
 }

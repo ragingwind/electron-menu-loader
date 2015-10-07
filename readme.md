@@ -13,7 +13,9 @@ $ npm install --save electron-menu-loader
 
 ```js
 // application, using loader
-var loader = require('electron-menu-loader')('menu');
+var loader = require('electron-menu-loader')('menu', [process.platform, 'help'], {
+	appMenu: true
+});
 
 // template, menu.js
 module.exports = {
@@ -28,29 +30,37 @@ module.exports = {
 		label: 'File',
 		submenu: [{
 			label: 'New file',
-			click() {
-				newFile();
-			}
+			event: 'new-file'
 		}]
 	},
 	help: [{
-		label: 'Find',
-		click() {
-			find();
-		}
+		label: 'Help',
+		submenu: []
 	}]
 };
 ```
 
 ## API
 
-### electronMenuLoader(template)
+### electronMenuLoader(file, <items>, <options>)
 
 #### template
 
 Type: `string`
 
-path of template script
+path of the file content with the sets of the menu items
+
+#### items
+
+Type: 'array'
+
+names of the item that will be picked up for menu to build up the `menu` instance of electron. such as 'darwin', returns value of process.platform or 'help'.
+
+#### options
+
+##### appManu
+
+if true, register menu to application menu. default is true.
 
 ## License
 

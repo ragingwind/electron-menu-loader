@@ -58,7 +58,7 @@ names of the item that will be picked up for menu to build up the `menu` instanc
 
 #### options
 
-##### appManu
+##### appMenu
 
 if true, register menu to application menu. default is true.
 

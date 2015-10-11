@@ -64,7 +64,7 @@ if true, register menu to application menu. default is true.
 
 ## Events
 
-`menu loader` support `event` property on each menu item with will be translated to custom event function. Custom event will be fired named as [meuitem-click](https://github.com/ragingwind/electron-menu-loader/blob/master/index.js#L9) by Electron click event
+`menu loader` supports `event` property on each menu item which will be translated to custom event function. Custom event will be fired named as [meuitem-click](https://github.com/ragingwind/electron-menu-loader/blob/master/index.js#L9) by Electron click event
 
 ## License
 

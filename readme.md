@@ -1,6 +1,6 @@
 # electron-menu-loader
 
-> Loading a menu template for app running on current platform
+> Loading menu template with custom events
 
 
 ## Install
@@ -42,7 +42,7 @@ module.exports = {
 
 ## API
 
-### electronMenuLoader(file, <items>, <options>)
+### electronMenuLoader(file, [items], [options])
 
 #### template
 
@@ -61,6 +61,10 @@ names of the item that will be picked up for menu to build up the `menu` instanc
 ##### appMenu
 
 if true, register menu to application menu. default is true.
+
+## Events
+
+`menu loader` support `event` property on each menu item with will be translated to custom event function. Custom event will be fired named as [meuitem-click](https://github.com/ragingwind/electron-menu-loader/blob/master/index.js#L9) by Electron click event
 
 ## License
 

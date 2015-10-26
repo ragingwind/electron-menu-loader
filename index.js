@@ -27,7 +27,7 @@ module.exports = function (file, items, opts) {
 	};
 
 	// read sets of menu
-	let sets = require(path.resolve(process.cwd(), file));
+	let sets = require(path.resolve(app.getAppPath(), file));
 	if (!sets) {
 		throw new Error('Menu template file has been missing');
 	}

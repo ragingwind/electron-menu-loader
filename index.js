@@ -45,7 +45,7 @@ module.exports = function (file, items, opts) {
 
 		for (let menu of set) {
 			for (let submenu of menu.submenu) {
-			// event custom prop will be replaced by click prop
+				// event custom prop will be replaced by click prop
 				if (submenu.event) {
 					bindClickEvent(submenu);
 				}

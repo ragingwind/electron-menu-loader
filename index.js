@@ -1,50 +1,44 @@
 'use strict';
 
-const Menu = require('menu');
 const path = require('path');
-const app = require('app');
+const {app, Menu} = require('electron');
 
 function bindClickEvent(menu) {
-	menu.click = function(menuItem, browserWindow) {
+	menu.click = function (menuItem, browserWindow) {
 		app.emit('menuitem-click', {
 			event: menu.event,
-			menuItem: menuItem,
-			browserWindow: browserWindow
+			menuItem,
+			browserWindow
 		});
 	};
 
 	return menu;
 }
 
-module.exports = function (file, items, opts) {
-	if (!Array.isArray(items)) {
-		opts = items;
-		items = [process.platform];
-	}
-
+module.exports = function (file, opts) {
 	opts = opts || {
 		appMenu: true
 	};
 
-	// read sets of menu
-	let sets = require(path.resolve(process.cwd(), file));
-	if (!sets) {
-		throw new Error('Menu template file has been missing');
+	// read manifest listmenu
+	// dynamic import is not supported in ES2015 import
+	let manifest;
+
+	if (typeof file === 'object') {
+		manifest = file;
+	} else {
+		manifest = require(path.resolve(process.cwd(), file));
+	}
+
+	if (!manifest) {
+		throw new Error('Invalud menu manifest file path');
 	}
 
 	let tpl = [];
 
-	// post-processing of template
-	for (let item of items) {
-		// get a menu of top level
-		let set = sets[item];
-
-		if (!Array.isArray(set)) {
-			throw new Error('Menu item type should be array');
-		}
-
-		for (let menu of set) {
-			for (let submenu of menu.submenu) {
+	for (const list in manifest) {
+		if (manifest[list].submenu) {
+			for (const submenu of manifest[list].submenu) {
 				// event custom prop will be replaced by click prop
 				if (submenu.event) {
 					bindClickEvent(submenu);
@@ -52,7 +46,7 @@ module.exports = function (file, items, opts) {
 			}
 		}
 
-		tpl = tpl.concat(set);
+		tpl = tpl.concat(manifest[list]);
 	}
 
 	const menu = Menu.buildFromTemplate(tpl);

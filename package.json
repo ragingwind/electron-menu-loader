@@ -13,7 +13,8 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo"
+    "test": "xo",
+    "start": "electron ./demo"
   },
   "files": [
     "index.js"
@@ -23,11 +24,20 @@
     "electron-menu",
     "electron-menu-loader"
   ],
+  "devDependencies": {
+    "electron": "^1.4.8",
+    "electron-debug": "^1.1.0",
+    "electron-packager": "8.3.0",
+    "xo": "^0.17.1"
+  },
   "xo": {
     "esnext": true,
     "envs": [
       "node"
-    ]
+    ],
+    "rules": {
+      "import/no-dynamic-require": 0
+    }
   },
   "jshintConfig": {
     "esnext": true,

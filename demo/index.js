@@ -1,18 +1,12 @@
 'use strict';
-const app = require('app');
-const path = require('path');
-const BrowserWindow = require('browser-window');
-// const MenuLoader = require('../');
-const menu = require('./menu-edit-and-view');
-console.log(menu);
-// report crashes to the Electron project
-require('crash-reporter').start({
-	companyName: 'github.com/ragingwind',
-	submitURL: 'http://github.com/ragingwind/electron-menu-loader'
-});
+
+const {app, BrowserWindow} = require('electron');
 
 // adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
+
+// load menu dynamically by electron-menu-loader
+require('../')('./demo/menu');
 
 // prevent window being garbage collected
 let mainWindow;
@@ -24,15 +18,13 @@ function onClosed() {
 }
 
 function createMainWindow() {
-	const win = new BrowserWindow({
+	mainWindow = new BrowserWindow({
 		width: 640,
 		height: 480
 	});
 
-	win.loadURL(`file://${__dirname}/index.html`);
-	win.on('closed', onClosed);
-
-	return win;
+	mainWindow.loadURL(`file://${__dirname}/index.html`);
+	mainWindow.on('closed', onClosed);
 }
 
 app.on('window-all-closed', () => {
@@ -42,13 +34,11 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-	mainWindow = createMainWindow();
+	createMainWindow();
+});
 
-	// MenuLoader.load({
-	//
-	// }, [
-	// 	'menu-darwin.js',
-	// 	'menu-edit.js',
-	// 	'menu-help.js'
-	// ]);
+app.on('menuitem-click', event => {
+	console.log(event.event,
+							event.menuItem.label,
+							event.browserWindow.getTitle());
 });

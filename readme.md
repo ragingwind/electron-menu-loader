@@ -27,8 +27,8 @@ require('electron-menu-loader')(menu);
 // manange menu click event in the single place
 app.on('menuitem-click', event => {
 	console.log(event.event,
-							event.menuItem.label,
-							event.browserWindow.getTitle());
+	event.menuItem.label,
+	event.browserWindow.getTitle());
 });
 ```
 
@@ -68,8 +68,8 @@ When user click the `Preferences`, the custom event will be fired to `app` with 
 ```js
 app.on('menuitem-click', event => {
 	console.log(event.event,
-							event.menuItem.label,
-							event.browserWindow.getTitle());
+	event.menuItem.label,
+	event.browserWindow.getTitle());
 });
 ```
 ## License
